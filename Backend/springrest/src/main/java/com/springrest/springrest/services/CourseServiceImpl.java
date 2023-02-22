@@ -1,60 +1,38 @@
 package com.springrest.springrest.services;
 
+import com.springrest.springrest.dao.CourseDao;
 import com.springrest.springrest.entities.Course;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
-public class CourseServiceImpl implements CourseService{
+public class CourseServiceImpl {
 
-    List<Course> list;
+    @Autowired
+    CourseDao courseDao;
 
-    public CourseServiceImpl() {
-        list = new ArrayList<>();
-        list.add(new Course(145,"Java core course","this course contains basic of java"));
-        list.add(new Course(146,"Spring Boot Course","Creating Rest Api using SpringBoot"));
-    }
-
-    @Override
     public List<Course> getCourses() {
-        return list;
+        return this.courseDao.findAll();
     }
 
-    @Override
     public Course getCourse(long courseID) {
-        Course c = null;
-        for (Course course : list) {
-            if(course.getId() == courseID) {
-                c = course;
-                break;
-            }
-        }
-        return c;
+        return this.courseDao.findById(courseID).get();
     }
 
-    @Override
     public Course addCourse(Course course) {
-        list.add(course);
+        this.courseDao.save(course);
         return course;
     }
 
-    @Override
     public Course updateCourse(Course course) {
-        list.forEach( e-> {
-            if(e.getId() == course.getId()){
-                e.setTitle(course.getTitle());
-                e.setDescription(course.getDescription());
-            }
-        });
-        return null;
+        this.courseDao.save(course);
+        return course;
     }
 
-    @Override
-    public void deleteCouse(long parseLong) {
-        list = this.list.stream().filter(e-> e.getId()!= parseLong).collect(Collectors.toList());
-
+    public void deleteCourse(long parseLong) {
+        Course byId = this.courseDao.getReferenceById(parseLong);
+        this.courseDao.delete(byId);
     }
 }
