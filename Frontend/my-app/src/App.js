@@ -1,10 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { Button } from "reactstrap";
 
 function App() {
   return (
     <div>
-      <h1>Simple application</h1>
+      <h1>This is bootstrap Component</h1>
+      <Button color="primary">First React Button</Button>
     </div>
   );
 }
