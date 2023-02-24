@@ -7,6 +7,7 @@ import Course from "./components/Course";
 import AllCourse from "./components/Allcourses";
 import AddCourse from "./components/AddCourse";
 import Header from "./components/Header";
+import Menu from "./components/Menu";
 
 function App() {
   const btnHandle = () => {
@@ -22,7 +23,7 @@ function App() {
         <Header />
         <Row>
           <Col md={4}>
-            <h2>This is menu side</h2>
+            <Menu />
           </Col>
           <Col md={8}>
             <h2>This is container side</h2>
