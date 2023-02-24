@@ -2,6 +2,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Button } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
+import Home from "./components/Home";
+import Course from "./components/Course";
 
 function App() {
   const btnHandle = () => {
@@ -11,9 +13,16 @@ function App() {
     <div>
       <ToastContainer />
       <h1>This is bootstrap Component</h1>
-      <Button color="warning" outline onClick={btnHandle}>
-        First React Button
-      </Button>
+      <Home />
+      <Course
+        course={{ title: "Java", description: "This is a Java Basic Course" }}
+      />
+      <Course
+        course={{
+          title: "Django",
+          description: "This is a Django Basic Course",
+        }}
+      />
     </div>
   );
 }
