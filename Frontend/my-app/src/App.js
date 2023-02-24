@@ -8,6 +8,7 @@ import AllCourse from "./components/Allcourses";
 import AddCourse from "./components/AddCourse";
 import Header from "./components/Header";
 import Menu from "./components/Menu";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   const btnHandle = () => {
@@ -18,18 +19,22 @@ function App() {
 
   return (
     <div>
-      <ToastContainer />
-      <Container>
-        <Header />
-        <Row>
-          <Col md={4}>
-            <Menu />
-          </Col>
-          <Col md={8}>
-            <h2>This is container side</h2>
-          </Col>
-        </Row>
-      </Container>
+      <Router>
+        <ToastContainer />
+        <Container>
+          <Header />
+          <Row>
+            <Col md={4}>
+              <Menu />
+            </Col>
+            <Col md={8}>
+              <Route path="/" component={Home} exact />
+              <Route path="/add-course" component={AddCourse} exact />
+              <Route path="/view-courses" component={AllCourse} exact />
+            </Col>
+          </Row>
+        </Container>
+      </Router>
     </div>
   );
 }
