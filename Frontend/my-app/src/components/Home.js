@@ -1,6 +1,11 @@
 import React from "react";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {
+    document.title = "Home";
+  }, []);
+
   return (
     <div>
       <h1>Learning Code with Durgesh</h1>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 
 import {
   Card,
@@ -12,6 +13,9 @@ import {
 } from "reactstrap";
 
 const Course = ({ course }) => {
+  useEffect(() => {
+    document.title = "Home";
+  }, []);
   return (
     <Card>
       <CardBody>

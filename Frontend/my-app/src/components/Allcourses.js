@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Course from "./Course";
 
 const AllCourse = (course) => {
@@ -7,6 +7,10 @@ const AllCourse = (course) => {
     { title: "Python", description: "Basic Python Course" },
     { title: "React", description: "Basic React Course" },
   ]);
+
+  useEffect(() => {
+    document.title = "All Course";
+  }, []);
 
   return (
     <div>
