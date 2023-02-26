@@ -8,13 +8,9 @@ const AllCourse = (course) => {
   // calling loading course  function
   useEffect(() => {
     getAllCourseFromServer();
-  });
+  }, []);
 
-  const [courses, setCourses] = useState([
-    { title: "Java", description: "Basic Java Course" },
-    { title: "Python", description: "Basic Python Course" },
-    { title: "React", description: "Basic React Course" },
-  ]);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     document.title = "All Course";
@@ -27,6 +23,7 @@ const AllCourse = (course) => {
       (success) => {
         // success
         console.log(success.data);
+        setCourses(success.data);
         toast.success("Success", {
           position: "bottom-center",
         });
